@@ -24,7 +24,9 @@ module.exports = {
     alias: {
         Main: path.resolve(__dirname, './app/components/Main.jsx'),
         applicationStyles: path.resolve(__dirname, './app/styles/app.scss'),
-        Navigation: path.resolve(__dirname, './app/components/Navigation.jsx')
+        Navigation: path.resolve(__dirname, './app/components/Navigation.jsx'),
+        Timer: path.resolve(__dirname, './app/components/Timer.jsx'),
+        TimerCountdown: path.resolve(__dirname, './app/components/TimerCountdown.jsx')
     },
     extensions: ['.js', '.jsx']
   },
