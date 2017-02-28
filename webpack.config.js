@@ -1,46 +1,47 @@
 var path = require('path');
-var webpack = require('webpack')
+var webpack = require('webpack');
 
 module.exports = {
-  entry: [
-      'script-loader!jquery/dist/jquery.min.js',
-      'script-loader!foundation-sites/dist/js/foundation.min.js',
-      './app/app.jsx'
-  ],
-  externals: {
-      jquery: 'jQuery'
-  },
-  plugins: [
-      new webpack.ProvidePlugin({
-          '$': 'jquery',
-          'jQuery': 'jquery'
-      })
-  ],
-  output: {
-    path: __dirname,
-    filename: './public/bundle.js'
-  },
-  resolve: {
-    alias: {
-        Main: path.resolve(__dirname, './app/components/Main.jsx'),
-        applicationStyles: path.resolve(__dirname, './app/styles/app.scss'),
-        Navigation: path.resolve(__dirname, './app/components/Navigation.jsx'),
-        Timer: path.resolve(__dirname, './app/components/Timer.jsx'),
-        TimerCountdown: path.resolve(__dirname, './app/components/TimerCountdown.jsx')
+    entry: [
+        'script-loader!jquery/dist/jquery.min.js',
+        'script-loader!foundation-sites/dist/js/foundation.min.js',
+        './app/app.jsx'
+    ],
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
+        })
+    ],
+    externals: {
+        jquery: 'jQuery'
     },
-    extensions: ['.js', '.jsx']
-  },
-  module: {
-    loaders: [
-      {
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'stage-0']
+    output: {
+        path: __dirname,
+        filename: './public/bundle.js'
+    },
+    resolve: {
+        alias: {
+            Main: path.resolve(__dirname, './app/components/Main.jsx'),
+            applicationStyles: path.resolve(__dirname, './app/styles/app.scss'),
+            Navigation: path.resolve(__dirname, './app/components/Navigation.jsx'),
+            Timer: path.resolve(__dirname, './app/components/Timer.jsx'),
+            TimerCountdown: path.resolve(__dirname, './app/components/TimerCountdown.jsx'),
+            Clock: path.resolve(__dirname, './app/components/Clock.jsx')
         },
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/
-      }
-    ]
-  },
-  devtool: 'cheap-module-eval-source-map'
+        extensions: ['.js', '.jsx']
+    },
+    module: {
+        loaders: [
+        {
+            loader: 'babel-loader',
+            query: {
+                presets: ['react', 'es2015', 'stage-0']
+            },
+            test: /\.jsx?$/,
+            exclude: /(node_modules|bower_components)/
+        }]
+    },
+    devtool: 'cheap-module-eval-source-map'
 };
